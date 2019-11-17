@@ -1,0 +1,25 @@
+.drawer-container {
+    height: 100%;
+    margin: 10px;
+    border: 1px solid #555;
+}
+
+.calculate_button {
+    font-size: large;
+    width: 50%;
+    margin: auto;
+}
+
+.left-drawer {
+    width: 20%;
+}
+
+.section-title {
+    font-size: large;
+    color: black;
+}
+
+.section-subtitle {
+    font-size: medium;
+    color: black;
+}

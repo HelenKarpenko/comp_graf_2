@@ -1,0 +1,17 @@
+<div class="cardList">
+  <mat-card class="example-card" *ngFor="let fractal of fractals" class="cardListItem" routerLink = "/sandbox/{{fractal.id}}">
+    <img mat-card-image src="{{linkPicture}}/{{fractal.id}}">
+    <mat-card-content>
+      <p *ngIf="fractal.id!=null">Id: {{fractal.id}}</p>
+      <p *ngIf="fractal.type!=null">Type: {{fractal.type}}</p>
+      <p *ngIf="fractal.width!=null">Width: {{fractal.width}}</p>
+      <p *ngIf="fractal.height!=null">Height: {{fractal.height}}</p>
+      <p *ngIf="fractal.centerX!=null">Center X: {{fractal.centerX}}</p>
+      <p *ngIf="fractal.centerY!=null">Center Y: {{fractal.centerY}}</p>
+      <p *ngIf="fractal.maxZ!=null">Max Z: {{fractal.maxZ}}</p>
+      <p *ngIf="fractal.color!=null">Color: {{fractal.color}}</p>
+      <p *ngIf="fractal.power!=null">Power: {{fractal.power}}</p>
+      <p *ngIf="fractal.iteration!=null">Iteration: {{fractal.iteration}}</p>
+    </mat-card-content> 
+  </mat-card>
+</div>
