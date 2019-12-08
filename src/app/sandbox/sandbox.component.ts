@@ -18,6 +18,7 @@ export class SandboxComponent implements OnInit {
   fractal: Fractal = new Fractal();
   statId: string;
   linkPicture: string;
+  base64Image: string;
   timeStamp: number;
 
   isLoadingResults = false;
@@ -41,10 +42,10 @@ export class SandboxComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null) {
       this.isLoadingResults = true;
-      
+
       this.fractalService.getById(id)
         .subscribe((res: any) => {
-          console.log(res.data );
+          console.log(res.data);
           this.fractal.id = res.data.id;
           this.fractal.type = res.data.type;
           this.fractal.width = res.data.width;
@@ -78,17 +79,17 @@ export class SandboxComponent implements OnInit {
       height: [this.fractal.height, Validators.required],
 
       isRndCenterX: [true],
-      centerX: [{value: this.fractal.centerX, disabled: true}, Validators.required],
+      centerX: [{ value: this.fractal.centerX, disabled: true }, Validators.required],
       isRndCenterY: [true],
-      centerY: [{value: this.fractal.centerY, disabled: true}, Validators.required],
+      centerY: [{ value: this.fractal.centerY, disabled: true }, Validators.required],
       isRndMaxZ: [true],
-      maxZ: [{value: this.fractal.maxZ, disabled: true}, Validators.required],
+      maxZ: [{ value: this.fractal.maxZ, disabled: true }, Validators.required],
       isRndColor: [true],
-      color: [{value: this.fractal.color, disabled: true}, Validators.required],
+      color: [{ value: this.fractal.color, disabled: true }, Validators.required],
       isRndPower: [true],
-      power: [{value: this.fractal.power, disabled: true}, Validators.required],
+      power: [{ value: this.fractal.power, disabled: true }, Validators.required],
       isRndIteration: [true],
-      iteration: [{value: this.fractal.iteration, disabled: true}, Validators.required],
+      iteration: [{ value: this.fractal.iteration, disabled: true }, Validators.required],
     });
   }
 
@@ -102,9 +103,9 @@ export class SandboxComponent implements OnInit {
         const id = res.data.id;
         this.statId = id;
         this.isLoadingResults = false;
-        setInterval(()=>{
+        setInterval(() => {
           this.updateLinkPicture();
-        },3000)
+        }, 3000)
       }, (err: any) => {
         console.log(err);
         this.isLoadingResults = false;
@@ -123,9 +124,27 @@ export class SandboxComponent implements OnInit {
 
   updateLinkPicture() {
     this.linkPicture = `${environment.api_url}/image-presets/random-image/${this.statId}`;
+    fetch(this.linkPicture)
+      .then(res => res.blob())
+      .then(blob => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.base64Image = reader.result.toString();
+        };
+        reader.readAsDataURL(blob);
+      })
   }
 
-  copyMessage(val: string){
+  downloadImage() {
+    const downloadLink = document.createElement("a");
+    const fileName = `fractal-${new Date().toLocaleDateString}.png`;
+
+    downloadLink.href = this.base64Image;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
+
+  copyMessage(val: string) {
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';

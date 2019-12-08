@@ -1,18 +1,18 @@
 .cardList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  /* Column Gap */
-  .cardList > * {
-    box-sizing: border-box;
-  }
-  .cardList > * {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-  /* Item sizing */
-  .cardListItem {
-    flex: 0 1 calc(33.3% - 32px);
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+/* Column Gap */
+.cardList > * {
+  box-sizing: border-box;
+}
+.cardList > * {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+/* Item sizing */
+.cardListItem {
+  flex: 0 1 calc(33.3% - 2%);
+}

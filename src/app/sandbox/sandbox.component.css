@@ -2,16 +2,21 @@
     height: 100%;
     margin: 10px;
     border: 1px solid #555;
+    display: flex;
 }
 
-.calculate_button {
+/* .calculate_button {
     font-size: large;
     width: 50%;
-    margin: auto;
-}
+    margin: auto; 
+} */
 
 .left-drawer {
+    min-width: 200px;
     width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .section-title {
@@ -23,3 +28,16 @@
     font-size: medium;
     color: black;
 }
+
+.param-row
+{
+    display: flex;
+    flex-direction: row;
+}
+
+/* .cardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  } */
