@@ -17,7 +17,7 @@ export class SandboxComponent implements OnInit {
   fractalTypes: string[];
   fractal: Fractal = new Fractal();
   statId: string;
-  linkPicture: string;
+  linkPicture: string='https://icon-library.net/images/spinner-icon-gif/spinner-icon-gif-10.jpg';
   base64Image: string;
   timeStamp: number;
 

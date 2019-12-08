@@ -99,7 +99,7 @@
 
     <mat-drawer-content>
         <a [href]="linkPicture">
-            <img [src]="base64Image" alt=""/>
+            <img [src]="base64Image||linkPicture" alt=""/>
         </a>
         <div>
             Link to always random image: <button mat-raised-button color="primary" (click)="copyMessage(linkPicture)" value="click to copy">{{linkPicture?'copy this':'wait'}}</button> <br>
