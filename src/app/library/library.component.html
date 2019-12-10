@@ -13,5 +13,8 @@
       <p *ngIf="fractal.power!=null">Power: {{fractal.power}}</p>
       <p *ngIf="fractal.iteration!=null">Iteration: {{fractal.iteration}}</p>
     </mat-card-content> 
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="downloadImage()" value="click to download">Download</button>
+    </mat-card-actions>
   </mat-card>
 </div>

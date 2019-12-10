@@ -13,6 +13,7 @@ export class LibraryComponent implements OnInit {
   fractals: Fractal[] = [];
   isLoadingResults = false;
   linkPicture: string;
+  base64Image: string;
 
   constructor(private fractalService: FractalService) { }
 
@@ -33,4 +34,12 @@ export class LibraryComponent implements OnInit {
     });
   }
 
+  downloadImage() {
+    const downloadLink = document.createElement("a");
+    const fileName = `fractal-${new Date().toLocaleDateString}.png`;
+
+    downloadLink.href = this.base64Image;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  }
 }

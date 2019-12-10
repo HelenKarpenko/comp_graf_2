@@ -5,11 +5,19 @@
     display: flex;
 }
 
-/* .calculate_button {
+.calculate_button {
     font-size: large;
     width: 50%;
     margin: auto; 
-} */
+}
+
+.calculate_button-div {
+    width: 100%;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .left-drawer {
     min-width: 200px;

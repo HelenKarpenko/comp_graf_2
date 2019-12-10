@@ -16,13 +16,13 @@
 
                 <mat-list-item class="param-row">
                     <mat-form-field>
-                        <input type="number" matInput formControlName="width" placeholder="Width:" required>
+                        <input type="number" min="0" matInput formControlName="width" placeholder="Width:" required>
                     </mat-form-field>
                 </mat-list-item>
 
                 <mat-list-item class="param-row"> 
                     <mat-form-field>
-                        <input type="number" matInput formControlName="height" placeholder="Height:" required>
+                        <input type="number" min="0" matInput formControlName="height" placeholder="Height:" required>
                     </mat-form-field>
                 </mat-list-item>
 
@@ -73,7 +73,7 @@
 
                 <mat-list-item class="param-row">
                     <mat-form-field fxFlex="75%"> 
-                        <input type="number" matInput formControlName="power" placeholder="Power:" required>
+                        <input type="number" min="1.75" matInput formControlName="power" placeholder="Power:" required>
                     </mat-form-field>
                     <mat-slide-toggle formControlName="isRndPower"
                         (change)="disableEnableInput(fractalParamForm.get('isRndPower').value, 'power')">
@@ -81,20 +81,13 @@
                     </mat-slide-toggle>
                 </mat-list-item>
 
-                <mat-list-item class="param-row">
-                    <mat-form-field fxFlex="75%">
-                        <input type="number" formControlName="iteration" matInput placeholder="Max iteration:" required>
-                    </mat-form-field>
-                    <mat-slide-toggle formControlName="isRndIteration"
-                        (change)="disableEnableInput(fractalParamForm.get('isRndIteration').value, 'iteration')">
-                        <mat-icon>casino</mat-icon>
-                    </mat-slide-toggle>
-                </mat-list-item>
-
             </mat-list>
         </form>
-        <input type="submit" value="GO!" (click)="onGenerate()" class="calculate_button"
-            [disabled]="!fractalParamForm.valid">
+        <div class="calculate_button-div"> 
+            <button mat-raised-button type="submit" (click)="onGenerate()" class="calculate_button" [disabled]="!fractalParamForm.valid">
+                GO!
+            </button>
+        </div>
     </mat-drawer>
 
     <mat-drawer-content>
@@ -106,7 +99,7 @@
         </div>
         
         <div>
-            <button mat-raised-button *ngIf="base64Image" color="primary" (click)="downloadImage()" value="click to download">{{base64Image?'Download':'wait'}}</button> <br>
+            <button mat-raised-button color="primary" (click)="downloadImage()" value="click to download">{{base64Image?'Download':'wait'}}</button> <br>
         </div>
     </mat-drawer-content>
 

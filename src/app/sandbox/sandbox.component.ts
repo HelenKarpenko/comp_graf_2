@@ -55,7 +55,6 @@ export class SandboxComponent implements OnInit {
           this.fractal.maxZ = res.data.randomInstance.preset.maxZ;
           this.fractal.color = res.data.randomInstance.preset.color;
           this.fractal.power = res.data.randomInstance.preset.power;
-          this.fractal.iteration = res.data.randomInstance.preset.iteration;
 
           this.statId = this.fractal.id;
           this.setFormValue();
@@ -75,8 +74,8 @@ export class SandboxComponent implements OnInit {
   setFormValue() {
     this.fractalParamForm = this.formBuilder.group({
       type: [this.fractal.type, Validators.required],
-      width: [this.fractal.width, Validators.required],
-      height: [this.fractal.height, Validators.required],
+      width: [this.fractal.width, [Validators.required, Validators.min(0)]],
+      height: [this.fractal.height, [Validators.required, Validators.min(0)]],
 
       isRndCenterX: [true],
       centerX: [{ value: this.fractal.centerX, disabled: true }, Validators.required],
@@ -87,9 +86,7 @@ export class SandboxComponent implements OnInit {
       isRndColor: [true],
       color: [{ value: this.fractal.color, disabled: true }, Validators.required],
       isRndPower: [true],
-      power: [{ value: this.fractal.power, disabled: true }, Validators.required],
-      isRndIteration: [true],
-      iteration: [{ value: this.fractal.iteration, disabled: true }, Validators.required],
+      power: [{ value: this.fractal.power, disabled: true }, [Validators.required, Validators.min(1.75)]],
     });
   }
 
